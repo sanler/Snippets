@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.tid.snippets">
+	<logger name="com.tdigital.sb">
 		<level value="info" />
 	</logger>
 	

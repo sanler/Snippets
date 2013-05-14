@@ -1,9 +1,10 @@
-package repository;
+package com.tid.snippets.repository;
 
-import model.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.tid.snippets.model.User;
 
 
 

@@ -28,9 +28,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.tdigital.snippets" />
+	<context:component-scan base-package="com.tid.snippets" />
 	<beans:import resource="applicationContext-db-dbcp.xml" />
-    <jpa:repositories base-package="com.tid.repository" />
+    <jpa:repositories base-package="com.tid.snippets.repository" />
 
         
 

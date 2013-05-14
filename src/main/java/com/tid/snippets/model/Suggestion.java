@@ -1,4 +1,4 @@
-package model;
+package com.tid.snippets.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

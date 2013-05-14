@@ -8,8 +8,6 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import model.Suggestion;
-import model.User;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,8 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import repository.UserRepository;
-import services.UserService;
+import com.tid.snippets.model.Suggestion;
+import com.tid.snippets.model.User;
+import com.tid.snippets.repository.UserRepository;
+import com.tid.snippets.services.UserService;
+
 
 
 /**

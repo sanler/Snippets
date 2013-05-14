@@ -1,14 +1,15 @@
-package repository;
+package com.tid.snippets.repository;
 
 import java.util.List;
 
-import model.Suggestion;
-import model.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import com.tid.snippets.model.Suggestion;
+import com.tid.snippets.model.User;
 
 
 

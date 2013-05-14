@@ -1,18 +1,19 @@
-package services;
+package com.tid.snippets.services;
 
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import model.Suggestion;
-import model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import repository.SuggestionRepository;
-import repository.UserRepository;
+import com.tid.snippets.model.Suggestion;
+import com.tid.snippets.model.User;
+import com.tid.snippets.repository.SuggestionRepository;
+import com.tid.snippets.repository.UserRepository;
+
 
 
 @Named

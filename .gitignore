@@ -13,3 +13,7 @@ target
 .classpath
 .project
 .springBeans
+
+# IntelliJ
+*.iml
+.idea

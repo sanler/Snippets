@@ -18,7 +18,11 @@
 
 	<button onclick="document.location.href = '/snippets/newUser'">Registrarse</button>
 	
-	
+	<p id="nuevoSnippetbutton">
+    <a id="button2"  href="/snippets/newSnippet">Crear nuevo snippet</a>
+</p>
+
+	<button onclick="document.location.href = '/snippets/newSnippet'">Crear nuevo snippet</button>
 	
 <form action="addSuggestion" method="POST">
 
@@ -67,6 +71,33 @@
                                      	<td><a href="/snippets/userSuggestion?name=${suggestion.user.username}" >${suggestion.user.username}</a></td>
                                      	 
                                         <td>${suggestion.body}</td>
+                                                                                                                        
+
+								   </tr>
+							
+                                </c:forEach>
+			</table>
+			
+			<table>
+                                <tr>		
+                               		<th>Id</th>		
+                                    <th>Type</th>
+                                    <th>User</th>
+                                    <th>Text</th>
+                                    
+                                
+                                </tr>
+            
+                                  <c:forEach var="snippet" items="${snippetList}">
+                                
+						 
+                                    <tr>
+                                     <td><a href="/snippets/addComment?name=${snippet.id}" >${snippet.id}</a></td>
+                                  	  <td>${snippet.type}</td>
+                                    
+                                     	<td>${snippet.user.username}</td>
+                                     	 
+                                        <td>${snippet.text}</td>
                                                                                                                         
 
 								   </tr>

@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.tid.snippets.model.Comment;
+import com.tid.snippets.model.Snippet;
 import com.tid.snippets.model.Suggestion;
 import com.tid.snippets.model.User;
 import com.tid.snippets.repository.UserRepository;
@@ -39,6 +41,7 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	private List<Suggestion> suggestionList;
+	private List<Snippet> snippetList;
 	private User user;
 	@Inject
 	private UserService sbd;
@@ -71,6 +74,11 @@ public class HomeController {
 		
 		model.addAttribute("suggestionList", suggestionList);
 		
+		
+		snippetList = new ArrayList<Snippet>();
+		snippetList= sbd.readAllSnippet();
+		model.addAttribute("snippetList", snippetList);
+		
 		return "home";
 	}
 	
@@ -89,6 +97,25 @@ public class HomeController {
 		
 		return "newU";
 	}
+	
+	@RequestMapping(value = "/newSnippet", method = RequestMethod.GET)
+	public String newSnippet( Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		return "newSnippet";
+	}
+	
+	@RequestMapping(value = "/addSnippet", method = RequestMethod.POST)
+	public String addSnippet(@ModelAttribute("snippet") Snippet snippet, @ModelAttribute("username")String username, Locale locale, Model model, BindingResult result) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+	sbd.createSnippet(snippet.getText(), snippet.getType(), username);
+		
+		System.out.println("snippet :" + snippet.getText() + snippet.getType());
+		
+	return "home";
+	}
+	
 	
 	@RequestMapping(value = "/addContact", method = RequestMethod.POST)
 	public String addContact(@ModelAttribute("user") User user, Locale locale, Model model, BindingResult result) {
@@ -124,5 +151,25 @@ public class HomeController {
 		model.addAttribute("suggestions", suggestions);
 		
 		return "userSuggestion";
+	}
+	
+	@RequestMapping(value = "/addComment", method = RequestMethod.GET)
+	public String addComment( Locale locale, Model model, @RequestParam("name") String name) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		model.addAttribute("snippetId", name);
+		
+		return "newComment";
+	}
+	
+	@RequestMapping(value = "/regComment", method = RequestMethod.POST)
+	public String regComment( @ModelAttribute("comment") Comment comment, @ModelAttribute("nameuser")String nameuser, Locale locale, Model model, BindingResult result) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		sbd.createComment(nameuser, comment.getText(), comment.getSnippetId());
+		
+		System.out.println("comment :" + comment.getText());
+		
+		return "home";
 	}
 }

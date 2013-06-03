@@ -1,12 +1,10 @@
 package com.tid.snippets.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import java.util.List;
 
 @Entity
 public class Snippet {
@@ -19,6 +17,9 @@ public class Snippet {
 	private String type;
 	@Column
 	private String text;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "snippet")
+    private List<Comment> comments;
 	
 	@ManyToOne(optional = false)
 	private User user;
@@ -75,9 +76,15 @@ public class Snippet {
 		this.user = user;
 	}
 
+    public List<Comment> getComments() {
+        return comments;
+    }
 
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
-	public Snippet() {
+    public Snippet() {
 		super();
 	}
 	

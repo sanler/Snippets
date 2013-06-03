@@ -30,4 +30,22 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+    <!--
+   This filter makes JPA EntityManagers available via the current thread, which will be auto-detected by transaction managers.
+   Allows lazy loading in web views despite the original transactions already being completed.
+   -->
+    <filter>
+        <filter-name>opensession</filter-name>
+        <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+        <init-param>
+            <param-name>entityManagerFactoryBeanName</param-name>
+            <param-value>entityManagerFactory</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>opensession</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
 </web-app>

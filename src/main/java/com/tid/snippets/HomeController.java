@@ -158,7 +158,9 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		model.addAttribute("snippetId", name);
-		
+		Snippet snippet =     sbd.getSnippetById(name);
+        List<Comment> comments = snippet.getComments();
+
 		return "newComment";
 	}
 	

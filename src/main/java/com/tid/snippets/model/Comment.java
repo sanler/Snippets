@@ -18,7 +18,10 @@ public class Comment {
 	
 	@Column
 	private String  snippetId;
-	
+
+    @ManyToOne(optional = false)
+    private Snippet snippet;
+
 	@Column
 	private String text;
 	
@@ -64,10 +67,23 @@ public class Comment {
 		this.snippetId = snippetId;
 	}
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    public Snippet getSnippet() {
+        return snippet;
+    }
 
-	public Comment() {
+    public void setSnippet(Snippet snippet) {
+        this.snippet = snippet;
+    }
+
+    public Comment() {
 		super();
 	}
 	

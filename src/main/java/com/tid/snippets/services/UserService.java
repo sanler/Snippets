@@ -109,15 +109,21 @@ public class UserService {
 		//rellenar
 		
 		User user = userrepository.findOne(name);
-		
-		if(user!=null){
+		Snippet snippet = snippetRepository.findOne(snippetId);
+		if(user!=null && snippet!=null){
+
 			Comment comment = new Comment();
 			comment.setText(text);
+            comment.setSnippet(snippet);
 			comment.setSnippetId(snippetId);
 			comment.setUser(user);
 			commentRepository.save(comment);
 		}
 	}
+
+    public Snippet getSnippetById(String id) {
+        return snippetRepository.findOne(id);
+    }
 
 	public UserService() {
 		super();
